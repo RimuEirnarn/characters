@@ -186,7 +186,7 @@ document
       });
 
       if (!response.ok) {
-        throw new Error(`API Error: ${response.status} ${response.statusText}`);
+        throw new Error(`API Error: ${response.status} ${response.statusText}\n${(await response.json())[reason]}`);
       }
 
       const results = await response.json();
