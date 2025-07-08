@@ -186,7 +186,7 @@ document
       });
 
       if (!response.ok) {
-        throw new Error(`API Error: ${response.status} ${response.statusText}\n${response.status != 500 ? (await response.json())[reason] : 'Server failure'}`);
+        throw new Error(`API Error: ${response.status} ${response.statusText}\n${response.status != 500 ? (await response.json()).reason : 'Server failure'}`);
       }
 
       const results = await response.json();
