@@ -166,7 +166,12 @@ body {
   letter-spacing: 1px;
 }
 
-.calculate-btn:hover {
+.calculate-btn:disabled {
+  background: linear-gradient(135deg, #2d3748 0%, #374151 100%);
+  cursor: not-allowed;
+}
+
+.calculate-btn:hover:not(:disabled) {
   transform: translateY(-2px);
   box-shadow: 0 10px 25px rgba(79, 172, 254, 0.3);
 }
@@ -296,4 +301,13 @@ body {
 .box {
   padding-top: 10px;
   padding-bottom: 10px;
+}
+
+.mb-0-25rm {
+  margin-bottom: 0.25rem;
+}
+
+.subtitle {
+  color: #2d3748;
+  font-weight: lighter;
 }

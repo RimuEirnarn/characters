@@ -1,4 +1,6 @@
-const SITE = "https://rimueirnarn.pythonanywhere.com/api/char/"
+
+const BASE = "https://rimueirnarn.pythonanywhere.com"
+const SITE = `${BASE}/api/char/`
 
 // Handle subinput visibility
 const inputs = document.querySelectorAll('input[type="number"]');
@@ -16,6 +18,22 @@ inputs.forEach((input) => {
     });
   }
 });
+
+document.addEventListener("DOMContentLoaded", () => {
+  fetch(`${BASE}/api/revision`).then((resp) => {
+    resp.json().then((val) => {
+      const sub = document.querySelector(".subtitle")
+      if (sub)
+        sub.textContent = `(Server Revision: ${val.data})`
+      const btn = document.querySelector('.calculate-btn')
+      if (btn)
+        btn.removeAttribute("disabled")
+    })
+  }, (e) => {
+    document.querySelector('.subtitle').textContent = "Server offline"
+    console.error(e.message)
+  })
+})
 
 const statLabels = {
   1: "Character HP",
@@ -175,6 +193,7 @@ document
       const queryString =
         queryParams.length > 0 ? "?" + queryParams.join("&") : "";
 
+      data['name'] = formData.get('characterName') || 'Character'
       console.debug(data, queryString);
       // Make API call
       const response = await fetch(`${SITE}${queryString}`, {
