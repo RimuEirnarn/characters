@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Character & Weapon Attribute Calculator</title>
+  <link rel="stylesheet" href="/static/css/calc.css">
+</head>
+
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>⚔️ Character & Weapon Calculator</h1>
+      <p>Calculate advanced attributes for your characters and weapons</p>
+    </div>
+
+    <div class="main-content">
+      <div class="form-section">
+        <h2 class="section-title">Input Attributes</h2>
+
+        <form id="calculatorForm">
+          <!-- Character Name -->
+          <div class="form-group">
+            <label for="characterName">Character Name</label>
+            <input type="text" id="characterName" name="characterName" placeholder="Enter character name">
+          </div>
+
+          <div class="d-flex">
+            <div class="form-group w-33 mr-075">
+              <label for="globalBase">Global Scaling Value</label>
+              <input type="number" name="globalBase" id="globalBase" placeholder="Enter global base" min="0"
+                step="0.000001">
+            </div>
+            <div class="form-group w-33 mr-075">
+              <label for="globalFrom">Global From Level</label>
+              <input type="number" name="globalFrom" id="globalFrom" placeholder="Enter from level" min="1" step="1">
+            </div>
+            <div class="form-group w-33">
+              <label for="globalTo">Global Target Level</label>
+              <input type="number" name="globalTo" id="globalTo" placeholder="Enter to level" min="1" step="1">
+            </div>
+          </div>
+
+          <!-- Character Levels -->
+          <div class="form-group">
+            <label>Character Level Range</label>
+            <div class="level-inputs">
+              <div>
+                <label for="charFromLevel">From Level</label>
+                <input type="number" id="charFromLevel" name="charFromLevel" placeholder="Current level" min="1">
+              </div>
+              <div>
+                <label for="charToLevel">Target Level</label>
+                <input type="number" id="charToLevel" name="charToLevel" placeholder="Target level" min="1">
+              </div>
+            </div>
+          </div>
+
+          <!-- Character Stats -->
+          <div class="box">
+            <label>Character Base Stats</label>
+            <div class="d-flex">
+              <div class="form-group w-25 mr-075">
+                <label for="charBaseHP">Base HP</label>
+                <div class="input-container">
+                  <input type="number" id="charBaseHP" name="charBaseHP" placeholder="Enter base HP" step="1">
+                  <div class="subinput" id="charBaseHPSub">
+                    <label for="charBaseHPScale">Scaling Value for HP Calculation</label>
+                    <input type="number" id="charBaseHPScale" name="charBaseHPScale" placeholder="Optional scale value"
+                      step="0.000001">
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group w-25 mr-075">
+                <label for="charBaseATK">Base ATK</label>
+                <div class="input-container">
+                  <input type="number" id="charBaseATK" name="charBaseATK" placeholder="Enter base ATK" step="1">
+                  <div class="subinput" id="charBaseATKSub">
+                    <label for="charBaseATKScale">Scaling Value for ATK Calculation</label>
+                    <input type="number" id="charBaseATKScale" name="charBaseATKScale"
+                      placeholder="Optional scaling value" step="0.000001">
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group w-25 mr-075">
+                <label for="charBaseDEF">Base DEF</label>
+                <div class="input-container">
+                  <input type="number" id="charBaseDEF" name="charBaseDEF" placeholder="Enter base DEF" step="1">
+                  <div class="subinput" id="charBaseDEFSub">
+                    <label for="charBaseDEFScale">Scaling Value for DEF Calculation</label>
+                    <input type="number" id="charBaseDEFScale" name="charBaseDEFScale"
+                      placeholder="Optional scaling value" step="0.000001">
+                  </div>
+                </div>
+              </div>
+
+              <!-- <div class="form-group w-20 mr-075">
+                <label for="charBaseSPD">Base SPD</label>
+                <div class="input-container">
+                  <input type="number" id="charBaseSPD" name="charBaseSPD" placeholder="Enter base SPD" step="1">
+                  <div class="subinput" id="charBaseSPDSub">
+                    <label for="charBaseSPDScale">Scaling Value for SPD Calculation</label>
+                    <input type="number" id="charBaseSPDScale" name="charBaseSPDScale"
+                      placeholder="Optional scaling value" step="0.01">
+                  </div>
+                </div>
+              </div> -->
+
+              <div class="form-group w-25">
+                <label for="charBaseMP">Base MP</label>
+                <div class="input-container">
+                  <input type="number" id="charBaseMP" name="charBaseMP" placeholder="Enter base MP" step="1">
+                  <div class="subinput" id="charBaseMPSub">
+                    <label for="charBaseMPScale">Scaling Value for MP Calculation</label>
+                    <input type="number" id="charBaseMPScale" name="charBaseMPScale"
+                      placeholder="Optional scaling value" step="0.000001">
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+
+          <!-- Weapon Levels -->
+          <div class="form-group">
+            <label>Weapon Level Range</label>
+            <div class="level-inputs">
+              <div>
+                <label for="weaponFromLevel">From Level</label>
+                <input type="number" id="weaponFromLevel" name="weaponFromLevel" placeholder="Current level" min="1">
+              </div>
+              <div>
+                <label for="weaponToLevel">Target Level</label>
+                <input type="number" id="weaponToLevel" name="weaponToLevel" placeholder="Target level" min="1">
+              </div>
+            </div>
+          </div>
+
+
+          <!-- Weapon Stats -->
+          <div class="box">
+            <label>Weapon Base Stats</label>
+            <div class="d-flex">
+              <div class="form-group w-33 mr-075">
+                <label for="weaponBaseHP">Base HP</label>
+                <div class="input-container">
+                  <input type="number" id="weaponBaseHP" name="weaponBaseHP" placeholder="Enter weapon base HP"
+                    step="1">
+                  <div class="subinput" id="weaponBaseHPSub">
+                    <label for="weaponBaseHPScale">Scaling Value for Weapon HP Calculation</label>
+                    <input type="number" id="weaponBaseHPScale" name="weaponBaseHPScale"
+                      placeholder="Optional scaling value" step="0.000001">
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group w-33 mr-075">
+                <label for="weaponBaseATK">Base ATK</label>
+                <div class="input-container">
+                  <input type="number" id="weaponBaseATK" name="weaponBaseATK" placeholder="Enter weapon base ATK"
+                    step="1">
+                  <div class="subinput" id="weaponBaseATKSub">
+                    <label for="weaponBaseATKScale">Scaling Value for Weapon ATK Calculation</label>
+                    <input type="number" id="weaponBaseATKScale" name="weaponBaseATKScale"
+                      placeholder="Optional scaling value" step="0.000001">
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group w-33 mr-075">
+                <label for="weaponBaseDEF">Base DEF</label>
+                <div class="input-container">
+                  <input type="number" id="weaponBaseDEF" name="weaponBaseDEF" placeholder="Enter weapon base DEF"
+                    step="1">
+                  <div class="subinput" id="weaponBaseDEFSub">
+                    <label for="weaponBaseDEFScale">Scaling Value for Weapon DEF Calculation</label>
+                    <input type="number" id="weaponBaseDEFScale" name="weaponBaseDEFScale"
+                      placeholder="Optional scaling value" step="0.000001">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Weapon Primary Attribute -->
+          <div class="d-flex">
+            <div class="form-group w-fit-content mr-075">
+              <label for="weaponPrimaryAttr">Weapon Primary Attribute</label>
+              <select id="weaponPrimaryAttr" name="weaponPrimaryAttr">
+                <option value="">Select Primary Attribute</option>
+                <option value="HP%">HP%</option>
+                <option value="ATK%">ATK%</option>
+                <option value="DEF%">DEF%</option>
+                <option value="SPD">SPD</option>
+                <option value="SPD%">SPD%</option>
+                <option value="Crit Rate">Crit Rate</option>
+                <option value="Crit DMG">Crit DMG</option>
+                <option value="Effect Rate">Effect Rate</option>
+                <option value="Effect RES">Effect RES</option>
+                <option value="Elemental Proficiency">Elemental Proficiency</option>
+              </select>
+            </div>
+
+            <div class="form-group w-25 mw-fit-content">
+              <label for="weaponPrimaryValueBase">Primary Attribute Value</label>
+              <div class="input-container">
+                <input type="number" id="weaponPrimaryValueBase" name="weaponPrimaryValueBase"
+                  placeholder="Enter primary attribute value" step="0.01">
+                <div class="subinput" id="weaponPrimaryValueBaseSub">
+                  <label for="weaponPrimaryValueBaseScale">Scaling Value for Primary Attribute</label>
+                  <input type="number" id="weaponPrimaryValueBaseScale" name="weaponPrimaryValueBaseScale"
+                    placeholder="Optional scaling value" step="0.000001">
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+          <button type="submit" class="calculate-btn">🔮 Calculate Attributes</button>
+      </div>
+
+      </form>
+
+      <div class="results-section">
+        <h2 class="section-title">Calculated Results</h2>
+        <div id="resultsContainer">
+          <div class="results-container">
+            <p style="text-align: center; color: #6b7280; font-style: italic;">
+              Enter your character and weapon details, then click "Calculate Attributes" to see the
+              results.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+
+  <script defer src="./calc.js"></script>
+</body>
+
+</html>
