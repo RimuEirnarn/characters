@@ -1,4 +1,4 @@
-const SITE = "https://rimueirnarn.pythonanywhere.com/api/characters"
+const SITE = "https://rimueirnarn.pythonanywhere.com/api/character"
 
 // Handle subinput visibility
 const inputs = document.querySelectorAll('input[type="number"]');
